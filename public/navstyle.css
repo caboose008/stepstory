@@ -1,0 +1,25 @@
+.wrapper{
+	display: flex;
+	align-items: stretch;
+}
+#sidemenu{
+	min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    background-color: #002db3;
+    color: #fff;
+    transition: all 0.3s;
+    z-index: 999;
+    border-width: 3px;
+    border-color: #e6e600;
+    padding-left: 10px;
+}
+.hidemenu{
+	margin-left: -200px;
+}
+#headline{
+	background-color: #e6ecff;
+}
+#sidebarCollapse{
+	text-orientation: right;
+}

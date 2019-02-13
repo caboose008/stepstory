@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test client</title>
+</head>
+<body>
+	<button onclick="testServer()" > Test the server</button>
+<script type="text/javascript">
+	var testServer = function(){
+		let s_id = "step1";
+		let param = {};//{'s_id' : s_id};
+			const asychGet= new XMLHttpRequest();
+			let url = `http://localhost:80/requeststory?s_id=${s_id}`;
+
+			asychGet.onerror = (e) =>{
+				console.log("Error");
+				console.log(e);
+			}
+			
+
+			asychGet.open('GET', url);
+			asychGet.onreadystatechange = (t) => {
+				console.log(t.target.status);
+				console.log(t.target.readyState);
+				if(t.target.status === 200 && t.target.readyState === 4){
+					if(t.target.responseText === '-1'){
+						alert(`This story is missing something : no ${s_id}`);
+					} else if(t.target.responseText === '-2'){
+						alert(`Client didn't specify the story. Parameter is missing.`);
+					} else{
+						let jsonObj = t.target.responseText;
+		            	console.log(jsonObj);		
+					}
+					
+				} 
+				
+			}
+			asychGet.setRequestHeader("Content-type", "application/json; charset=utf-8");
+			/*asychGet.setRequestHeader("Content-length", param.length);
+			asychGet.setRequestHeader("Connection", "close");*/
+			console.log("Opening");
+
+			
+			console.log("Sending");
+			asychGet.send();
+	};
+</script>
+</body>
+</html>

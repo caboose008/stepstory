@@ -1,83 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dummy html for testing creating the structure</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<title>Stepstory - telling a story step by step</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+	    
+    <link rel="stylesheet" type="text/css" href="style.css">
+     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/map/modestmaps.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+
+    <div id="content">
+    
+    <div class="container-fluid">
+        <div class="row">
+             <div class="col-lg-1 left-arrow"><a href="#left"><i class="fa fa-chevron-left"></i></a></div>
+                <div class="col-lg-10 main-frame" id='map'>
+                <h2>Maps</h2>
+                </div>
+                <div class="col-lg-1 right-arrow"><a href="#right"><i class="fa fa-chevron-right"></i></a></div>
         </div>
 
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </nav>
-
-</div>  
-
-	<div id="content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Toggle Sidebar</span>
-            </button>
-
-        </div>
-    </nav>
+    </div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function () {
 
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
+</div>
 
-});
-</script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>  
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#menuitemsid').children('li').on('click', function (event) {
+                $('.selected').toggleClass('selected');
+                let targetEl = $(event.target);
+                targetEl.toggleClass('selected');
+            });
+            $('#sidebarCollapse').on('click', () => {
+                $('#sidebar').toggleClass('active');
+            });
+            const asychObj= new XMLHttpRequest();
+            let url = "http://localhost:8000/";
+            asychObj.open('GET', url);
+            console.log("Opening");
+            asychObj.onload = (res) => {
+            console.log(res);
+    };
+    asychObj.onerror = () =>{
+        console.log("Error connecting to the server");
+    }
+    console.log("Sending");
+    asychObj.send();
+    console.log("Sent");
+            // name of a div element:
+                    var parent = 'map';
+
+                    // defaults to Google-style Mercator projection, so works
+                    // out of the box with OpenStreetMap and friends:
+                    var template = new MM.Template('http://tile.openstreetmap.org/{Z}/{X}/{Y}.png');
+                    var layer = new MM.Layer(template);
+
+                    // without a size, it will expand to fit the parent:
+                    var map = new MM.Map(parent, layer);
+                    let lat = 40.179504;
+                    let long = 44.512256;
+                    var point = new MM.Point(lat, long)
+                    map.setZoom(6).setCenter({ lat: lat, lon: long });
+                    //map.locationPoint(point);
+        });        
+                    
+    </script>
+
 </body>
 </html>

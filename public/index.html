@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Stepstory - telling a story step by step</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+      
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/map/modestmaps.min.js"></script>
+    
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta
@@ -27,15 +40,40 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>  
+ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#menuitemsid').children('li').on('click', function (event) {
+                $('.selected').toggleClass('selected');
+                let targetEl = $(event.target);
+                targetEl.toggleClass('selected');
+            });
+            $('#sidebarCollapse').on('click', () => {
+                $('#sidebar').toggleClass('active');
+            });
+            var drawMap = (lat, lon, zoom) =>{
+              // name of a div element:
+                    var parent = 'map';
+
+                    // defaults to Google-style Mercator projection, so works
+                    // out of the box with OpenStreetMap and friends:
+                    var template = new MM.Template('http://tile.openstreetmap.org/{Z}/{X}/{Y}.png');
+                    var layer = new MM.Layer(template);
+
+                    // without a size, it will expand to fit the parent:
+                    var map = new MM.Map(parent, layer);
+                    
+                    var point = new MM.Point(lat, long)
+                    map.setZoom(6).setCenter({ lat: lat, lon: long });
+                    //map.locationPoint(point);
+            }
+        });        
+                    
+    </script>
   </body>
 </html>
